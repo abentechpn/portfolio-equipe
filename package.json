@@ -1,0 +1,24 @@
+{
+  "name": "portfolio-equipe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+  "start": "node server.js",
+  "build": "cd client && npm install && npm run build"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abentechpn/portfolio-equipe.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abentechpn/portfolio-equipe/issues"
+  },
+  "homepage": "https://github.com/abentechpn/portfolio-equipe#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
