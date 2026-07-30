@@ -1,10 +1,13 @@
+import ProjectGallery from '../components/ProjectGallery'
+import { projects, allTechs } from '../data/projects'
+
 function Projets() {
   return (
-    <div>
-      <h1>Projets</h1>
-      <p>Galerie des projets de l'équipe.</p>
+    <div style={{ padding: '2rem', textAlign: 'left' }}>
+      <h1 style={{ textAlign: 'center' }}>Nos Projets</h1>
+      <ProjectGallery projects={projects} allTechs={allTechs} />
     </div>
-  );
+  )
 }
 
-export default Projets;
+export default Projets

@@ -1,0 +1,24 @@
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu_list {
+  display: flex;
+  list-style: none;
+  gap: 20px; /* Espace de 20px entre chaque lien du menu */
+  padding: 0;
+  margin: 0;
+}
+
+.menu_link {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.menu_link--active {
+  font-weight: bold;
+  color: #007bff; /* Couleur du lien lorsqu'il est actif */
+}
