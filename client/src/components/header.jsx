@@ -1,16 +1,24 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Header({ theme, toggleTheme }) {
+  const navLinkClass = ({ isActive }) => (isActive ? "active" : "");
+
   return (
     <header className="site-header">
       <div className="logo">
-        <Link to="/">Mon Portfolio</Link>
+        <NavLink to="/">Mon Portfolio</NavLink>
       </div>
 
       <nav aria-label="Navigation principale">
-        <Link to="/">Accueil</Link>
-        <Link to="/equipe">Équipe</Link>
-        <Link to="/projets">Projets</Link>
+        <NavLink to="/" end className={navLinkClass}>
+          Accueil
+        </NavLink>
+        <NavLink to="/equipe" className={navLinkClass}>
+          Équipe
+        </NavLink>
+        <NavLink to="/projets" className={navLinkClass}>
+          Projets
+        </NavLink>
       </nav>
 
       <button

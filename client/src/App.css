@@ -1,33 +1,71 @@
 /* ---------- Header ---------- */
 .site-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  border-bottom: 1px solid #ddd;
+  gap: 0.75rem 1.5rem;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--header-bg);
 }
 
 .site-header .logo a {
-  font-size: 1.4rem;
+  font-size: clamp(1.1rem, 4vw, 1.4rem);
   font-weight: bold;
   text-decoration: none;
+  white-space: nowrap;
+  color: var(--accent-color);
 }
 
 .site-header nav {
   display: flex;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
 }
 
 .site-header nav a {
   text-decoration: none;
+  color: var(--text-color);
+}
+
+.site-header nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+  color: var(--accent-color);
 }
 
 .site-header button {
-  margin-left: 1.5rem;
+  margin-left: 0;
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  white-space: nowrap;
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+/* Sur très petit écran (mobile), empile logo / nav / bouton */
+@media (max-width: 480px) {
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-header nav {
+    width: 100%;
+  }
+
+  .site-header button {
+    align-self: flex-start;
+  }
+}
+
+/* ---------- Main content ---------- */
+.site-main {
+  flex: 1;
+  padding: 2rem 1.5rem;
 }
 
 /* ---------- Footer ---------- */
@@ -37,7 +75,7 @@
   align-items: center;
   gap: 0.5rem;
   padding: 1.5rem;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border-color);
   margin-top: 3rem;
   text-align: center;
 }
@@ -45,4 +83,8 @@
 .site-footer nav {
   display: flex;
   gap: 1rem;
+}
+
+.site-footer nav a {
+  color: var(--link-color);
 }

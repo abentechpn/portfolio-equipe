@@ -34,25 +34,50 @@ function Contact() {
   return (
     <div>
       <h1>Contact</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} noValidate>
         <div>
           <label htmlFor="nom">Nom</label>
-          <input type="text" id="nom" name="nom" value={formData.nom} onChange={handleChange} required />
+          <input
+            type="text"
+            id="nom"
+            name="nom"
+            value={formData.nom}
+            onChange={handleChange}
+            required
+            aria-required="true"
+          />
         </div>
         <div>
           <label htmlFor="email">Email</label>
-          <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required />
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            aria-required="true"
+          />
         </div>
         <div>
           <label htmlFor="message">Message</label>
-          <textarea id="message" name="message" value={formData.message} onChange={handleChange} required></textarea>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            aria-required="true"
+          ></textarea>
         </div>
         <button type="submit">Envoyer</button>
       </form>
 
-      {statut === 'envoi' && <p>Envoi en cours...</p>}
-      {statut === 'succes' && <p>Message envoyé avec succès !</p>}
-      {statut && statut !== 'envoi' && statut !== 'succes' && <p>Erreur : {statut}</p>}
+      <div role="status" aria-live="polite">
+        {statut === 'envoi' && <p>Envoi en cours...</p>}
+        {statut === 'succes' && <p>Message envoyé avec succès !</p>}
+        {statut && statut !== 'envoi' && statut !== 'succes' && <p>Erreur : {statut}</p>}
+      </div>
     </div>
   );
 }
