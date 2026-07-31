@@ -5,6 +5,7 @@ const translations = {
       home: "Accueil",
       team: "Équipe",
       projects: "Projets",
+      gallery: "Galerie",
       contact: "Contact",
     },
     theme: {
@@ -48,7 +49,16 @@ const translations = {
       competences: "Compétences",
       contact: "Contact",
       viewPhoto: "Agrandir la photo",
-      closePhoto: "Fermer la photo",
+    },
+    lightbox: {
+      close: "Fermer l'image",
+    },
+    galerie: {
+      sectionTitle: "Galerie",
+      viewAll: "Voir toute la galerie",
+      viewImage: "Agrandir l'image",
+      pageTitle: "Galerie complète",
+      pageSubtitle: "Photos et captures d'écran de l'équipe, des projets et des événements.",
     },
     projets: {
       title: "Nos Projets",
@@ -94,6 +104,7 @@ const translations = {
       home: "Home",
       team: "Team",
       projects: "Projects",
+      gallery: "Gallery",
       contact: "Contact",
     },
     theme: {
@@ -137,7 +148,16 @@ const translations = {
       competences: "Skills",
       contact: "Contact",
       viewPhoto: "Enlarge photo",
-      closePhoto: "Close photo",
+    },
+    lightbox: {
+      close: "Close image",
+    },
+    galerie: {
+      sectionTitle: "Gallery",
+      viewAll: "View full gallery",
+      viewImage: "Enlarge image",
+      pageTitle: "Full Gallery",
+      pageSubtitle: "Photos and screenshots from the team, projects, and events.",
     },
     projets: {
       title: "Our Projects",

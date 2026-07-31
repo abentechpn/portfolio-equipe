@@ -21,6 +21,9 @@ function Header({ theme, toggleTheme }) {
         <NavLink to="/projets" className={navLinkClass}>
           {t.nav.projects}
         </NavLink>
+        <NavLink to="/galerie" className={navLinkClass}>
+          {t.nav.gallery}
+        </NavLink>
       </nav>
 
       <div className="header-actions">

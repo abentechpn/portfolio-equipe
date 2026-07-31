@@ -1,7 +1,8 @@
-﻿import { useState, useEffect } from 'react';
+﻿import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import membres from '../data/membres';
 import { useLang } from '../context/LangContext';
+import Lightbox from '../components/Lightbox';
 import './EquipeDetail.css';
 
 export default function EquipeDetail() {
@@ -9,16 +10,6 @@ export default function EquipeDetail() {
   const { t, lang } = useLang();
   const membre = membres.find((m) => m.slug === slug);
   const [photoOuverte, setPhotoOuverte] = useState(false);
-
-  useEffect(() => {
-    if (!photoOuverte) return;
-
-    const handleKeyDown = (e) => {
-      if (e.key === 'Escape') setPhotoOuverte(false);
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [photoOuverte]);
 
   if (!membre) {
     return (
@@ -80,19 +71,7 @@ export default function EquipeDetail() {
       </section>
 
       {photoOuverte && (
-        <div className="lightbox-overlay" onClick={() => setPhotoOuverte(false)}>
-          <div className="lightbox-contenu" onClick={(e) => e.stopPropagation()}>
-            <button
-              type="button"
-              className="lightbox-fermer"
-              onClick={() => setPhotoOuverte(false)}
-              aria-label={t.equipeDetail.closePhoto}
-            >
-              ✕
-            </button>
-            <img className="lightbox-image" src={membre.photo} alt={membre.nom} />
-          </div>
-        </div>
+        <Lightbox src={membre.photo} alt={membre.nom} onClose={() => setPhotoOuverte(false)} />
       )}
     </div>
   );

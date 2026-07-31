@@ -157,3 +157,70 @@
 @keyframes brillance {
   to { background-position: 200% center; }
 }
+
+.accueil-galerie {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1.5rem 4rem;
+  text-align: center;
+  animation: entree 0.6s ease;
+}
+
+.accueil-galerie-titre {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.stories-bandeau {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+
+.stories-piste {
+  display: flex;
+  width: max-content;
+  gap: 1.2rem;
+  animation: defilement 22s linear infinite;
+}
+
+.stories-bandeau:hover .stories-piste {
+  animation-play-state: paused;
+}
+
+.story-vignette {
+  flex: 0 0 auto;
+  width: 84px;
+  height: 84px;
+  padding: 3px;
+  border: 3px solid var(--accent-color, #7c3aed);
+  border-radius: 50%;
+  background: var(--border-color, #ddd);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+}
+
+.story-vignette:hover,
+.story-vignette:focus-visible {
+  transform: scale(1.08);
+}
+
+.story-vignette img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.accueil-galerie-lien {
+  display: inline-block;
+  margin-top: 1.8rem;
+}
+
+@keyframes defilement {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
