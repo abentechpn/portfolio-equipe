@@ -35,6 +35,15 @@ export const projects = [
     course: 'INF3500',
     repoStats: { commits: 9, stars: 0 },
   },
+  {
+    id: 5,
+    title: 'Météo Dynamique',
+    description:
+      "Application web qui affiche la météo en temps réel selon la ville recherchée, en utilisant l'API Fetch pour récupérer les données.",
+    tech: ['HTML', 'CSS', 'JavaScript'],
+    course: 'LOG3500',
+    repoStats: { commits: 12, stars: 0 },
+  },
 ]
 
 export const allTechs = [...new Set(projects.flatMap((p) => p.tech))].sort()
