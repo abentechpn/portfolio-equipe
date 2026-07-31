@@ -1,36 +1,28 @@
-import { Routes, Route, Link } from 'react-router-dom'
-import { useTheme } from './context/ThemeContext'
-import Accueil from './pages/Accueil'
-import Equipe from './pages/Equipe'
-import Projets from './pages/Projets'
-import DetailProjet from './pages/DetailProjet'
-import Contact from './pages/Contact'
-import './App.css'
+import { Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Equipe from './pages/Equipe';
+import Projets from './pages/Projets';
+import ProjectDetail from './pages/ProjectDetail';
+import Contact from './pages/Contact';
 
 function App() {
-  const { theme, toggleTheme } = useTheme();
-
   return (
-    <div>
-      <nav>
-        <Link to="/">Accueil</Link>
-        <Link to="/equipe">Équipe</Link>
-        <Link to="/projets">Projets</Link>
-        <Link to="/contact">Contact</Link>
-        <button onClick={toggleTheme}>
-          {theme === 'light' ? '🌙 Sombre' : '☀️ Clair'}
-        </button>
-      </nav>
+    <>
+      <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Accueil />} />
-        <Route path="/equipe" element={<Equipe />} />
-        <Route path="/projets" element={<Projets />} />
-        <Route path="/projets/:id" element={<DetailProjet />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </div>
-  )
+      <div style={{ padding: '20px' }}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/equipe" element={<Equipe />} />
+          <Route path="/projets" element={<Projets />} />
+          <Route path="/projets/:id" element={<ProjectDetail />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="*" element={<h2>404 - Page non trouvée</h2>} />
+        </Routes>
+      </div>
+    </>
+  );
 }
 
-export default App
+export default App;

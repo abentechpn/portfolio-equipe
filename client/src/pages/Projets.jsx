@@ -1,10 +1,8 @@
-function Projets() {
+export default function Projets() {
   return (
     <div>
-      <h1>Projets</h1>
-      <p>Galerie des projets de l'équipe.</p>
+      <h1>Nos Projets</h1>
+      <p>Galerie des travaux et réalisations.</p>
     </div>
   );
 }
-
-export default Projets;
