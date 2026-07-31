@@ -1,24 +1,37 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import membres from '../data/membres';
+import { projects } from '../data/projects';
+import './Accueil.css';
 
-function Accueil() {
+export default function Accueil() {
   return (
-    <section aria-labelledby="accueil-titre">
-      <h1 id="accueil-titre">Bienvenue sur notre portfolio</h1>
-      <p>
-        Nous sommes une équipe d'étudiants en développement web, et ce site
-        présente notre parcours, nos compétences et nos réalisations.
+    <div className="accueil-hero">
+      <span className="accueil-badge">Portfolio d'equipe - ISTEAH</span>
+      <h1 className="accueil-titre">Mon Portfolio</h1>
+      <p className="accueil-soustitre">
+        Le portfolio collectif d'une equipe de 5 etudiants en genie logiciel.
+        Decouvrez notre equipe, nos projets et contactez-nous.
       </p>
 
-      <div className="accueil-liens">
-        <Link to="/equipe" className="bouton-accueil">
-          Découvrir l'équipe
-        </Link>
-        <Link to="/projets" className="bouton-accueil bouton-accueil-secondaire">
-          Voir nos projets
-        </Link>
+      <div className="accueil-boutons">
+        <Link to="/projets" className="accueil-bouton accueil-bouton--principal">Voir nos projets</Link>
+        <Link to="/equipe" className="accueil-bouton accueil-bouton--secondaire">Rencontrer l'equipe</Link>
       </div>
-    </section>
+
+      <div className="accueil-stats">
+        <div className="accueil-stat">
+          <span className="accueil-stat-nombre">{membres.length}</span>
+          <span className="accueil-stat-label">Membres</span>
+        </div>
+        <div className="accueil-stat">
+          <span className="accueil-stat-nombre">{projects.length}</span>
+          <span className="accueil-stat-label">Projets</span>
+        </div>
+        <div className="accueil-stat">
+          <span className="accueil-stat-nombre">100%</span>
+          <span className="accueil-stat-label">React + Express</span>
+        </div>
+      </div>
+    </div>
   );
 }
-
-export default Accueil;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ nom: '', email: '', message: '' });
@@ -64,7 +64,7 @@ export default function Contact() {
   return (
     <section aria-labelledby="contact-titre">
       <h1 id="contact-titre">Contact</h1>
-      <p>Une question, une proposition ? Écrivez-nous.</p>
+      <p>Une question, une proposition ? Ecrivez-nous.</p>
 
       <form className="formulaire-contact" onSubmit={handleSubmit} noValidate>
         <div className="champ">

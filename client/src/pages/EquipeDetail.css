@@ -1,0 +1,87 @@
+﻿.profil-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.profil-retour {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color, #7c3aed);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.profil-entete {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  animation: entree 0.4s ease;
+}
+
+.profil-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 15%;
+  border: 3px solid var(--accent-color, #7c3aed);
+}
+
+.profil-role {
+  color: var(--accent-color, #7c3aed);
+  font-weight: 600;
+  margin-top: 0.3rem;
+}
+
+.profil-section {
+  margin-bottom: 1.8rem;
+  animation: entree 0.5s ease;
+}
+
+.profil-section h2 {
+  font-size: 1.2rem;
+  border-bottom: 2px solid var(--border-color, #eee);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
+}
+
+.profil-competences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.profil-badge {
+  background: var(--accent-color, #7c3aed);
+  color: #fff;
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.profil-reseaux {
+  display: flex;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+}
+
+.profil-reseaux a {
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  background: var(--accent-color, #7c3aed);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: opacity 0.2s ease;
+}
+
+.profil-reseaux a:hover {
+  opacity: 0.85;
+}
+
+@keyframes entree {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}

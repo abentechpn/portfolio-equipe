@@ -1,38 +1,36 @@
-import membres from "../data/membres";
+import { Link } from 'react-router-dom';
+import membres from '../data/membres';
+import GithubStats from '../components/GithubStats';
+import './Equipe.css';
 
-function Equipe() {
+export default function Equipe() {
   return (
-    <section aria-labelledby="equipe-titre">
-      <h1 id="equipe-titre">Équipe</h1>
-      <p>Présentation des membres de l'équipe.</p>
+    <div className="equipe-page">
+      <h1 className="equipe-titre">Notre Equipe</h1>
+      <p className="equipe-soustitre">Presentation des membres de l'equipe. Cliquez sur un membre pour voir son profil complet.</p>
 
-      <ul className="grille-equipe">
-        {membres.map((membre, index) => (
-          <li
+      <div className="equipe-grille">
+        {membres.map((membre) => (
+          <Link
             key={membre.id}
-            className={
-              index === membres.length - 1
-                ? "carte-membre carte-membre-solo"
-                : "carte-membre"
-            }
+            to={`/equipe/${membre.id}`}
+            className="membre-carte"
+            aria-label={`Voir le profil de ${membre.nom}`}
           >
-            <img
-              src={membre.photo}
-              alt={`Photo de ${membre.nom}`}
-              className="photo-membre"
-            />
-            <h2>{membre.nom}</h2>
-            <p className="role-membre">{membre.role}</p>
-            <p>{membre.bio}</p>
-            {membre.github && (
-              <a href={membre.github} target="_blank" rel="noopener noreferrer" className="lien-github-membre" aria-label={`Voir le GitHub de ${membre.nom}`}>
-                Voir le GitHub
-              </a>
-            )}
-          </li>
+            <div className="membre-photo-wrap">
+              <img className="membre-photo" src={membre.photo} alt={membre.nom} />
+            </div>
+            <div className="membre-info">
+              <h3 className="membre-nom">{membre.nom}</h3>
+              <p className="membre-role">{membre.role}</p>
+            </div>
+          </Link>
         ))}
-      </ul>
-    </section>
+      </div>
+
+      <h2 style={{ marginTop: '3rem' }}>Statistiques GitHub</h2>
+      <GithubStats username="abentechpn" />
+    </div>
   );
 }
 
