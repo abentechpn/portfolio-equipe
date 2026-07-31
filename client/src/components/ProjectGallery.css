@@ -1,0 +1,41 @@
+.gallery__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.gallery__filter {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4em 0.9em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gallery__filter:hover {
+  color: var(--text-h);
+  border-color: var(--accent-2);
+}
+
+.gallery__filter--active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.gallery__empty {
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}

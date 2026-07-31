@@ -1,12 +1,51 @@
 import { useState } from 'react';
 
-function Contact() {
+export default function Contact() {
   const [formData, setFormData] = useState({ nom: '', email: '', message: '' });
   const [erreurs, setErreurs] = useState({});
-  const [statut, setStatut] = useState(null);
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+  const [envoiEnCours, setEnvoiEnCours] = useState(false);
+  const [erreurServeur, setErreurServeur] = useState(null);
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const validate = (values) => {
+    let newErrors = {};
+    if (!values.nom.trim()) newErrors.nom = 'Le nom est obligatoire.';
+    if (!values.email.trim()) newErrors.email = "L'adresse email est obligatoire.";
+    else if (!emailRegex.test(values.email)) newErrors.email = "Le format de l'adresse email est invalide.";
+    if (!values.message.trim()) newErrors.message = 'Le message ne peut pas être vide.';
+    else if (values.message.length < 10) newErrors.message = 'Le message doit contenir au moins 10 caractères.';
+    return newErrors;
+  };
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    const updatedForm = { ...formData, [name]: value };
+    setFormData(updatedForm);
+    setErrors(validate(updatedForm));
+  };
+
+  const validerFormulaire = () => {
+    const nouvellesErreurs = {};
+
+    if (!formData.nom.trim()) {
+      nouvellesErreurs.nom = "Le nom est requis.";
+    }
+
+    if (!formData.email.trim()) {
+      nouvellesErreurs.email = "L'email est requis.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      nouvellesErreurs.email = "Le format de l'email est invalide.";
+    }
+
+    if (!formData.message.trim()) {
+      nouvellesErreurs.message = "Le message est requis.";
+    }
+
+    setErreurs(nouvellesErreurs);
+    return Object.keys(nouvellesErreurs).length === 0;
   };
 
   const validerFormulaire = () => {
@@ -32,30 +71,35 @@ function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const validationErrors = validate(formData);
 
     if (!validerFormulaire()) {
       return;
     }
 
-    setStatut('envoi');
+    setErrors(validationErrors);
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
-      const data = await response.json();
-
-      if (response.ok) {
-        setStatut('succes');
-        setFormData({ nom: '', email: '', message: '' });
-        setErreurs({});
+    if (Object.keys(validationErrors).length === 0) {
+      setEnvoiEnCours(true);
+      setErreurServeur(null);
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+        const result = await response.json();
+        if (response.ok) {
+          setSubmitted(true);
+          setErreurs({});
       } else {
-        setStatut(data.error || 'erreur');
+          setErreurServeur(result.error || 'Une erreur est survenue.');
+        }
+      } catch {
+        setErreurServeur('Erreur de connexion au serveur.');
+      } finally {
+        setEnvoiEnCours(false);
       }
-    } catch {
-      setStatut('erreur');
     }
   };
 
@@ -85,67 +129,38 @@ function Contact() {
             </p>
           )}
         </div>
-
-        <div className="champ">
-          <label htmlFor="email">Entrez votre email</label>
+        <div>
+          <label htmlFor="email">Email</label>
           <input
             type="email"
             id="email"
             name="email"
-            placeholder="Ex : marie.dupont@email.com"
             value={formData.email}
             onChange={handleChange}
             required
             aria-required="true"
-            aria-invalid={!!erreurs.email}
-            aria-describedby={erreurs.email ? "email-erreur" : undefined}
           />
-          {erreurs.email && (
-            <p id="email-erreur" className="message-erreur" role="alert">
-              {erreurs.email}
-            </p>
-          )}
         </div>
-
-        <div className="champ">
-          <label htmlFor="message">Votre message</label>
-          <p id="message-aide" className="texte-aide">
-            Décrivez votre demande, projet ou question en quelques phrases.
-          </p>
+        <div>
+          <label htmlFor="message">Message</label>
           <textarea
             id="message"
             name="message"
-            rows="5"
-            placeholder="Ex : Je souhaite en savoir plus sur vos services de développement web..."
             value={formData.message}
             onChange={handleChange}
             required
             aria-required="true"
-            aria-invalid={!!erreurs.message}
-            aria-describedby={
-              erreurs.message ? "message-erreur message-aide" : "message-aide"
-            }
           ></textarea>
-          {erreurs.message && (
-            <p id="message-erreur" className="message-erreur" role="alert">
-              {erreurs.message}
-            </p>
-          )}
         </div>
-
-        <button type="submit" disabled={statut === 'envoi'}>
-          {statut === 'envoi' ? 'Envoi en cours...' : 'Envoyer'}
-        </button>
+        <button type="submit">Envoyer</button>
       </form>
 
-      <div role="status" aria-live="polite" className="statut-formulaire">
+      <div role="status" aria-live="polite">
+        {statut === 'envoi' && <p>Envoi en cours...</p>}
         {statut === 'succes' && <p>Message envoyé avec succès !</p>}
-        {statut && statut !== 'envoi' && statut !== 'succes' && (
-          <p>Erreur : {statut}</p>
-        )}
+        {statut && statut !== 'envoi' && statut !== 'succes' && <p>Erreur : {statut}</p>}
       </div>
-    </section>
+    </div>
   );
-}
 
-export default Contact;
+}

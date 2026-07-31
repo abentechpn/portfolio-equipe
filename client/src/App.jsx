@@ -19,6 +19,7 @@ function App() {
         <Route path="/projets" element={<Projets />} />
         <Route path="/projets/:id" element={<DetailProjet />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<h2>404 - Page non trouvée</h2>} />
       </Routes>
     </MainLayout>
   )
