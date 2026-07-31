@@ -1,26 +1,32 @@
-export const galleryItems = [
+﻿export const galleryItems = [
   {
     id: 1,
-    src: "/assets/gallery/equipe-groupe.jpg",
-    titre: "Photo d'equipe",
+    src: "/assets/gallery/Benchinaud.jpg",
+    titre: "Benchinaud Alfred",
     categorie: "equipe",
   },
   {
     id: 2,
-    src: "/assets/gallery/soutenance-projet.jpg",
-    titre: "Soutenance du projet LOG3500",
-    categorie: "evenement",
+    src: "/assets/gallery/marc.jpg",
+    titre: "Despelado Marc",
+    categorie: "equipe",
   },
   {
     id: 3,
-    src: "/assets/gallery/atlas-mondial-capture.jpg",
-    titre: "Capture d'ecran - Atlas Mondial Interactif",
-    categorie: "projet",
+    src: "/assets/gallery/Hosmane.jpg",
+    titre: "Hosmane Jean Francois",
+    categorie: "equipe",
   },
   {
     id: 4,
-    src: "/assets/gallery/caremap-dashboard.jpg",
-    titre: "Capture d'ecran - CareMap Dashboard",
-    categorie: "projet",
+    src: "/assets/gallery/Dimeus.jpg",
+    titre: "Rosalvo Dimeus",
+    categorie: "equipe",
+  },
+  {
+    id: 5,
+    src: "/assets/gallery/Newson.jpg",
+    titre: "Newson Laurane",
+    categorie: "equipe",
   },
 ]

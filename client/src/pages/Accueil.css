@@ -224,3 +224,12 @@
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
+@media (prefers-reduced-motion: reduce) {
+  .stories-piste {
+    animation: none;
+    width: auto;
+  }
+  .stories-piste > .story-vignette:nth-child(n+6) {
+    display: none;
+  }
+}
