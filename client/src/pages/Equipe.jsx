@@ -1,11 +1,8 @@
-import GithubStats from '../components/GithubStats';
-
-export default function Equipe() {
+function Equipe() {
   return (
     <div>
-      <h1>Notre Équipe</h1>
+      <h1>Équipe</h1>
       <p>Présentation des membres de l'équipe.</p>
-      <GithubStats username="abentechpn" />
     </div>
   );
 }

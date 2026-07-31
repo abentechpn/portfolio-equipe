@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({ nom: '', email: '', message: '' });
+  const [erreurs, setErreurs] = useState({});
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [envoiEnCours, setEnvoiEnCours] = useState(false);
@@ -26,9 +27,56 @@ export default function Contact() {
     setErrors(validate(updatedForm));
   };
 
+  const validerFormulaire = () => {
+    const nouvellesErreurs = {};
+
+    if (!formData.nom.trim()) {
+      nouvellesErreurs.nom = "Le nom est requis.";
+    }
+
+    if (!formData.email.trim()) {
+      nouvellesErreurs.email = "L'email est requis.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      nouvellesErreurs.email = "Le format de l'email est invalide.";
+    }
+
+    if (!formData.message.trim()) {
+      nouvellesErreurs.message = "Le message est requis.";
+    }
+
+    setErreurs(nouvellesErreurs);
+    return Object.keys(nouvellesErreurs).length === 0;
+  };
+
+  const validerFormulaire = () => {
+    const nouvellesErreurs = {};
+
+    if (!formData.nom.trim()) {
+      nouvellesErreurs.nom = "Le nom est requis.";
+    }
+
+    if (!formData.email.trim()) {
+      nouvellesErreurs.email = "L'email est requis.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      nouvellesErreurs.email = "Le format de l'email est invalide.";
+    }
+
+    if (!formData.message.trim()) {
+      nouvellesErreurs.message = "Le message est requis.";
+    }
+
+    setErreurs(nouvellesErreurs);
+    return Object.keys(nouvellesErreurs).length === 0;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate(formData);
+
+    if (!validerFormulaire()) {
+      return;
+    }
+
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
@@ -43,7 +91,8 @@ export default function Contact() {
         const result = await response.json();
         if (response.ok) {
           setSubmitted(true);
-        } else {
+          setErreurs({});
+      } else {
           setErreurServeur(result.error || 'Une erreur est survenue.');
         }
       } catch {
@@ -55,44 +104,63 @@ export default function Contact() {
   };
 
   return (
-    <div style={{ maxWidth: '500px', margin: '0 auto' }}>
-      <h1>Contactez-nous</h1>
+    <section aria-labelledby="contact-titre">
+      <h1 id="contact-titre">Contact</h1>
+      <p>Une question, une proposition ? Écrivez-nous.</p>
 
-      {submitted ? (
-        <div style={{ padding: '1rem', background: '#d4edda', color: '#155724', borderRadius: '5px' }}>
-          ✅ Message envoyé avec succès !
+      <form className="formulaire-contact" onSubmit={handleSubmit} noValidate>
+        <div className="champ">
+          <label htmlFor="nom">Entrez votre nom</label>
+          <input
+            type="text"
+            id="nom"
+            name="nom"
+            placeholder="Ex : Marie Dupont"
+            value={formData.nom}
+            onChange={handleChange}
+            required
+            aria-required="true"
+            aria-invalid={!!erreurs.nom}
+            aria-describedby={erreurs.nom ? "nom-erreur" : undefined}
+          />
+          {erreurs.nom && (
+            <p id="nom-erreur" className="message-erreur" role="alert">
+              {erreurs.nom}
+            </p>
+          )}
         </div>
-      ) : (
-        <form onSubmit={handleSubmit} noValidate style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div>
-            <label htmlFor="nom">Nom complet :</label>
-            <input type="text" id="nom" name="nom" value={formData.nom} onChange={handleChange}
-              style={{ width: '100%', padding: '0.5rem', marginTop: '0.2rem' }} />
-            {errors.nom && <span style={{ color: 'red', fontSize: '0.85rem' }}>{errors.nom}</span>}
-          </div>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            aria-required="true"
+          />
+        </div>
+        <div>
+          <label htmlFor="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            required
+            aria-required="true"
+          ></textarea>
+        </div>
+        <button type="submit">Envoyer</button>
+      </form>
 
-          <div>
-            <label htmlFor="email">Adresse Email :</label>
-            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange}
-              style={{ width: '100%', padding: '0.5rem', marginTop: '0.2rem' }} />
-            {errors.email && <span style={{ color: 'red', fontSize: '0.85rem' }}>{errors.email}</span>}
-          </div>
-
-          <div>
-            <label htmlFor="message">Message :</label>
-            <textarea id="message" name="message" rows="5" value={formData.message} onChange={handleChange}
-              style={{ width: '100%', padding: '0.5rem', marginTop: '0.2rem' }} />
-            {errors.message && <span style={{ color: 'red', fontSize: '0.85rem' }}>{errors.message}</span>}
-          </div>
-
-          {erreurServeur && <span style={{ color: 'red', fontSize: '0.85rem' }}>{erreurServeur}</span>}
-
-          <button type="submit" disabled={envoiEnCours}
-            style={{ padding: '0.75rem', cursor: 'pointer', background: '#007bff', color: '#fff', border: 'none', borderRadius: '4px' }}>
-            {envoiEnCours ? 'Envoi...' : 'Envoyer le message'}
-          </button>
-        </form>
-      )}
+      <div role="status" aria-live="polite">
+        {statut === 'envoi' && <p>Envoi en cours...</p>}
+        {statut === 'succes' && <p>Message envoyé avec succès !</p>}
+        {statut && statut !== 'envoi' && statut !== 'succes' && <p>Erreur : {statut}</p>}
+      </div>
     </div>
   );
+
 }
