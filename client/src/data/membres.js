@@ -51,18 +51,19 @@
     facebook: "",
     youtube: ""
   },
+  
   {
     id: 5,
     nom: "Benchinaud Alfred",
     role: "Backend, DevOps & Coordination",
-    bio: "Responsable du serveur Express, du deploiement Railway et de la coordination Git de l'equipe.",
-    parcours: "Etudiant a l'ISTEAH en genie logiciel, coordinateur du projet Portfolio Professionnel Dynamique. Gere l'architecture serveur et le pipeline de deploiement continu de l'equipe.",
+    bio: "Benchinaud Alfred est developpeur web et technologue. Etudiant finissant en Sciences du Management a l'Universite Vie de France et actuellement en formation dans le programme DUT en Technologies de l'Information et de la Communication (TIC) a l'ISTEAH. Developpeur actif, il est a l'origine de plusieurs projets numeriques, dont imjap.com, ABENTECH, CareMap et JEH. Il maitrise les outils bureautiques, le developpement web et la gestion de bases de donnees, et concoit des solutions numeriques adaptees aux besoins des institutions scolaires, sanitaires et de formation, alliant rigueur technique et vision manageriale.",
+    parcours: "Dans le cadre du projet de session LOG3500 Portfolio Professionnel Dynamique Full-Stack, realise au sein de son programme DUT a l'ISTEAH, il a coordonne l'equipe et pris en charge l'architecture serveur (Node.js/Express), la gestion du depot Git et le deploiement continu sur Railway.",
     competences: ["Node.js", "Express", "Git", "Railway", "DevOps"],
     photo: "/assets/equipe/Benchinaud.jpg",
     github: "https://github.com/abentechpn",
-    whatsapp: "+50942704652",
-    Portable: "+50931493692",
-    Email: "isteah.balfred@gmail.com",
+    whatsapp: "https://wa.me/50942704652",
+    portable: "+50931493692",
+    email: "isteah.balfred@gmail.com",
     youtube: "https://youtube.com/@abentech?si=sjDWWFNRpsm9m1eb"
   },
 ];
