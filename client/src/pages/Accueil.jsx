@@ -6,9 +6,10 @@ import './Accueil.css';
 export default function Accueil() {
   return (
     <div className="accueil-hero">
+      <span className="accueil-badge">Portfolio d'equipe - ISTEAH</span>
       <h1 className="accueil-titre">Mon Portfolio</h1>
       <p className="accueil-soustitre">
-        Le portfolio collectif d'une equipe de 5 etudiants en genie logiciel a l'ISTEAH.
+        Le portfolio collectif d'une equipe de 5 etudiants en genie logiciel.
         Decouvrez notre equipe, nos projets et contactez-nous.
       </p>
 

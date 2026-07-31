@@ -1,48 +1,104 @@
 ﻿.accueil-hero {
-  min-height: 70vh;
+  position: relative;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 3rem 1.5rem;
+  padding: 4rem 1.5rem;
+  overflow: hidden;
   animation: entree 0.6s ease;
 }
 
+.accueil-hero::before,
+.accueil-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.35;
+  z-index: 0;
+}
+
+.accueil-hero::before {
+  width: 420px;
+  height: 420px;
+  background: #7c3aed;
+  top: -120px;
+  left: -100px;
+}
+
+.accueil-hero::after {
+  width: 380px;
+  height: 380px;
+  background: #c084fc;
+  bottom: -100px;
+  right: -100px;
+}
+
+.accueil-badge {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  background: var(--accent-bg, rgba(124, 58, 237, 0.12));
+  color: var(--accent-color, #7c3aed);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.02em;
+}
+
 .accueil-titre {
-  font-size: 3rem;
-  margin-bottom: 0.6rem;
-  background: linear-gradient(90deg, var(--accent-color, #7c3aed), #c084fc);
+  position: relative;
+  z-index: 1;
+  font-size: 3.4rem;
+  font-weight: 800;
+  line-height: 1.2;
+  padding-bottom: 0.15em;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #7c3aed, #c084fc, #7c3aed);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: brillance 6s linear infinite;
 }
 
 .accueil-soustitre {
-  font-size: 1.2rem;
+  position: relative;
+  z-index: 1;
+  font-size: 1.15rem;
   color: var(--text-color, #555);
-  max-width: 600px;
-  margin: 0 auto 2rem;
+  max-width: 620px;
+  margin: 0 auto 2.2rem;
+  line-height: 1.6;
 }
 
 .accueil-boutons {
+  position: relative;
+  z-index: 1;
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .accueil-bouton {
-  padding: 0.8rem 1.8rem;
+  padding: 0.85rem 2rem;
   border-radius: 999px;
   text-decoration: none;
   font-weight: 600;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.2s ease;
 }
 
 .accueil-bouton--principal {
-  background: var(--accent-color, #7c3aed);
+  background: linear-gradient(90deg, #7c3aed, #a78bfa);
   color: #fff;
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.35);
 }
 
 .accueil-bouton--secondaire {
@@ -52,25 +108,37 @@
 }
 
 .accueil-bouton:hover {
-  transform: translateY(-3px);
-  opacity: 0.9;
+  transform: translateY(-4px);
+  opacity: 0.92;
 }
 
 .accueil-stats {
+  position: relative;
+  z-index: 1;
   display: flex;
-  gap: 2.5rem;
+  gap: 1.2rem;
   justify-content: center;
-  margin-top: 3rem;
   flex-wrap: wrap;
 }
 
 .accueil-stat {
-  text-align: center;
+  min-width: 140px;
+  padding: 1.3rem 1.5rem;
+  border-radius: 16px;
+  background: var(--header-bg, rgba(255,255,255,0.6));
+  border: 1px solid var(--border-color, rgba(124, 58, 237, 0.15));
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  transition: transform 0.25s ease;
+}
+
+.accueil-stat:hover {
+  transform: translateY(-4px);
 }
 
 .accueil-stat-nombre {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.1rem;
+  font-weight: 800;
   color: var(--accent-color, #7c3aed);
   display: block;
 }
@@ -78,9 +146,14 @@
 .accueil-stat-label {
   font-size: 0.85rem;
   color: var(--text-color, #666);
+  margin-top: 0.2rem;
 }
 
 @keyframes entree {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes brillance {
+  to { background-position: 200% center; }
 }
