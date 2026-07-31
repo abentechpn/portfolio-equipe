@@ -16,7 +16,7 @@ export default function Equipe() {
         {membres.map((membre) => (
           <Link
             key={membre.id}
-            to={`/equipe/${membre.id}`}
+            to={`/equipe/${membre.slug}`}
             className="membre-carte"
             aria-label={`${t.equipe.viewProfile} ${membre.nom}`}
           >

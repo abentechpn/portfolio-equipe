@@ -47,6 +47,8 @@ const translations = {
       parcours: "Parcours",
       competences: "Compétences",
       contact: "Contact",
+      viewPhoto: "Agrandir la photo",
+      closePhoto: "Fermer la photo",
     },
     projets: {
       title: "Nos Projets",
@@ -134,6 +136,8 @@ const translations = {
       parcours: "Background",
       competences: "Skills",
       contact: "Contact",
+      viewPhoto: "Enlarge photo",
+      closePhoto: "Close photo",
     },
     projets: {
       title: "Our Projects",

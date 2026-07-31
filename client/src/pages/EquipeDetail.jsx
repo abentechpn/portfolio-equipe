@@ -1,12 +1,24 @@
-﻿import { useParams, Link } from 'react-router-dom';
+﻿import { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import membres from '../data/membres';
 import { useLang } from '../context/LangContext';
 import './EquipeDetail.css';
 
 export default function EquipeDetail() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const { t, lang } = useLang();
-  const membre = membres.find((m) => String(m.id) === id);
+  const membre = membres.find((m) => m.slug === slug);
+  const [photoOuverte, setPhotoOuverte] = useState(false);
+
+  useEffect(() => {
+    if (!photoOuverte) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setPhotoOuverte(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [photoOuverte]);
 
   if (!membre) {
     return (
@@ -22,7 +34,14 @@ export default function EquipeDetail() {
       <Link to="/equipe" className="profil-retour">← {t.equipeDetail.back}</Link>
 
       <div className="profil-entete">
-        <img className="profil-photo" src={membre.photo} alt={membre.nom} />
+        <button
+          type="button"
+          className="profil-photo-bouton"
+          onClick={() => setPhotoOuverte(true)}
+          aria-label={t.equipeDetail.viewPhoto}
+        >
+          <img className="profil-photo" src={membre.photo} alt={membre.nom} />
+        </button>
         <div>
           <h1>{membre.nom}</h1>
           <p className="profil-role">{membre.role[lang]}</p>
@@ -59,6 +78,22 @@ export default function EquipeDetail() {
           {membre.youtube && <a href={membre.youtube} target="_blank" rel="noreferrer">YouTube</a>}
         </div>
       </section>
+
+      {photoOuverte && (
+        <div className="lightbox-overlay" onClick={() => setPhotoOuverte(false)}>
+          <div className="lightbox-contenu" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              className="lightbox-fermer"
+              onClick={() => setPhotoOuverte(false)}
+              aria-label={t.equipeDetail.closePhoto}
+            >
+              ✕
+            </button>
+            <img className="lightbox-image" src={membre.photo} alt={membre.nom} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

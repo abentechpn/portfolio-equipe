@@ -23,7 +23,7 @@ function App() {
         <Route path="/projets/:id" element={<DetailProjet />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<h2>{t.notFound.title}</h2>} />
-        <Route path="/equipe/:id" element={<EquipeDetail />} />
+        <Route path="/equipe/:slug" element={<EquipeDetail />} />
       </Routes>
     </MainLayout>
   )

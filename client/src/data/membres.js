@@ -2,6 +2,7 @@ const membres = [
   {
     id: 1,
     nom: "Despelado MARC",
+    slug: "despelado-marc",
     role: {
       fr: "Semantique, Accessibilite & Design responsive",
       en: "Semantics, Accessibility & Responsive Design",
@@ -24,6 +25,7 @@ const membres = [
   {
     id: 2,
     nom: "Hosmane Jean François",
+    slug: "hosmane-jean-francois",
     role: {
       fr: "Composants React UI",
       en: "React UI Components",
@@ -46,6 +48,7 @@ const membres = [
   {
     id: 3,
     nom: "Rosalvo Diméus",
+    slug: "rosalvo-dimeus",
     role: {
       fr: "Routage & Architecture Client",
       en: "Routing & Client Architecture",
@@ -68,6 +71,7 @@ const membres = [
   {
     id: 4,
     nom: "Newson Laurané",
+    slug: "newson-laurane",
     role: {
       fr: "Etat global & Integration API GitHub",
       en: "Global State & GitHub API Integration",
@@ -91,6 +95,7 @@ const membres = [
   {
     id: 5,
     nom: "Benchinaud Alfred",
+    slug: "benchinaud-alfred",
     role: {
       fr: "Backend, DevOps & Coordination",
       en: "Backend, DevOps & Coordination",
