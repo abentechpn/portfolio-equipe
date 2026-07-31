@@ -7,9 +7,9 @@ export default function Accueil() {
   return (
     <div className="accueil-hero">
       <span className="accueil-badge">Portfolio d'equipe - ISTEAH</span>
-      <h1 className="accueil-titre">Mon Portfolio</h1>
+      <h1 className="accueil-titre">Portfolio</h1>
       <p className="accueil-soustitre">
-        Le portfolio collectif d'une equipe de 5 etudiants en genie logiciel.
+        Le portfolio collectif d'une equipe de 5 etudiants en technologie de l'information.
         Decouvrez notre equipe, nos projets et contactez-nous.
       </p>
 
