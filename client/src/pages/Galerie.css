@@ -16,6 +16,54 @@
   animation: galerieEntree 0.5s ease;
 }
 
+.galerie-filtres {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.galerie-filtre {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4em 0.9em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.galerie-filtre:hover {
+  color: var(--text-h);
+  border-color: var(--accent-2);
+}
+
+.galerie-filtre--active {
+  color: #fff;
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.galerie-filtre-date {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.4em 0.9em;
+  cursor: pointer;
+}
+
+.galerie-vide {
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 0.85rem;
+}
+
 .galerie-grille {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
