@@ -58,11 +58,12 @@
     bio: "Responsable du serveur Express, du deploiement Railway et de la coordination Git de l'equipe.",
     parcours: "Etudiant a l'ISTEAH en genie logiciel, coordinateur du projet Portfolio Professionnel Dynamique. Gere l'architecture serveur et le pipeline de deploiement continu de l'equipe.",
     competences: ["Node.js", "Express", "Git", "Railway", "DevOps"],
-    photo: "/assets/equipe/membre5.jpg",
+    photo: "/assets/equipe/Benchinaud.jpg",
     github: "https://github.com/abentechpn",
-    whatsapp: "",
-    facebook: "",
-    youtube: ""
+    whatsapp: "+50942704652",
+    Portable: "+50931493692",
+    Email: "isteah.balfred@gmail.com",
+    youtube: "https://youtube.com/@abentech?si=sjDWWFNRpsm9m1eb"
   },
 ];
 export default membres;
