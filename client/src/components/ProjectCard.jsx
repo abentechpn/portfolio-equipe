@@ -1,6 +1,8 @@
+import { useLang } from '../context/LangContext'
 import './ProjectCard.css'
 
 function ProjectCard({ project }) {
+  const { lang } = useLang();
   const { title, description, tech, course, repoStats } = project
 
   return (
@@ -14,7 +16,7 @@ function ProjectCard({ project }) {
 
       <div className="card__body">
         <h3 className="card__title">{title}</h3>
-        <p className="card__description">{description}</p>
+        <p className="card__description">{description[lang]}</p>
 
         <div className="card__tags">
           {tech.map((t) => (

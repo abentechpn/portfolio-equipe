@@ -1,18 +1,21 @@
 import { Link } from "react-router-dom";
+import { useLang } from "../context/LangContext";
 
 function Footer() {
+  const { t } = useLang();
+
   return (
     <footer className="site-footer">
-      <p>&copy; {new Date().getFullYear()} Mon Portfolio. Tous droits réservés.</p>
+      <p>&copy; {new Date().getFullYear()} {t.nav.brand}. {t.footer.rights}</p>
       <nav aria-label="Liens du pied de page">
-        <Link to="/contact">Contact</Link>
+        <Link to="/contact">{t.nav.contact}</Link>
 
         <a
 
           href="https://wa.me/50938063319"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Nous contacter sur WhatsApp"
+          aria-label={t.footer.whatsappAriaLabel}
           className="lien-whatsapp"
         >
           <svg

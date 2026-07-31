@@ -1,6 +1,8 @@
 ﻿import { useState } from 'react';
+import { useLang } from '../context/LangContext';
 
 export default function Contact() {
+  const { t } = useLang();
   const [formData, setFormData] = useState({ nom: '', email: '', message: '' });
   const [erreurs, setErreurs] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -11,11 +13,11 @@ export default function Contact() {
 
   const validerFormulaire = (values) => {
     const nouvellesErreurs = {};
-    if (!values.nom.trim()) nouvellesErreurs.nom = "Le nom est requis.";
-    if (!values.email.trim()) nouvellesErreurs.email = "L'email est requis.";
-    else if (!emailRegex.test(values.email)) nouvellesErreurs.email = "Le format de l'email est invalide.";
-    if (!values.message.trim()) nouvellesErreurs.message = "Le message est requis.";
-    else if (values.message.length < 10) nouvellesErreurs.message = "Le message doit contenir au moins 10 caracteres.";
+    if (!values.nom.trim()) nouvellesErreurs.nom = t.contact.errors.nameRequired;
+    if (!values.email.trim()) nouvellesErreurs.email = t.contact.errors.emailRequired;
+    else if (!emailRegex.test(values.email)) nouvellesErreurs.email = t.contact.errors.emailInvalid;
+    if (!values.message.trim()) nouvellesErreurs.message = t.contact.errors.messageRequired;
+    else if (values.message.length < 10) nouvellesErreurs.message = t.contact.errors.messageMinLength;
     return nouvellesErreurs;
   };
 
@@ -45,10 +47,10 @@ export default function Contact() {
           setSubmitted(true);
           setErreurs({});
         } else {
-          setErreurServeur(result.error || 'Une erreur est survenue.');
+          setErreurServeur(result.error || t.contact.errors.genericServer);
         }
       } catch {
-        setErreurServeur('Erreur de connexion au serveur.');
+        setErreurServeur(t.contact.errors.connection);
       } finally {
         setEnvoiEnCours(false);
       }
@@ -57,22 +59,22 @@ export default function Contact() {
 
   return (
     <section aria-labelledby="contact-titre">
-      <h1 id="contact-titre">Contact</h1>
-      <p>Une question, une proposition ? Ecrivez-nous.</p>
+      <h1 id="contact-titre">{t.contact.title}</h1>
+      <p>{t.contact.subtitle}</p>
 
       {submitted ? (
         <div role="status" aria-live="polite">
-          <p>Message envoye avec succes !</p>
+          <p>{t.contact.successMessage}</p>
         </div>
       ) : (
         <form className="formulaire-contact" onSubmit={handleSubmit} noValidate>
           <div className="champ">
-            <label htmlFor="nom">Entrez votre nom</label>
+            <label htmlFor="nom">{t.contact.nameLabel}</label>
             <input
               type="text"
               id="nom"
               name="nom"
-              placeholder="Ex : Marie Dupont"
+              placeholder={t.contact.namePlaceholder}
               value={formData.nom}
               onChange={handleChange}
               required
@@ -88,7 +90,7 @@ export default function Contact() {
           </div>
 
           <div className="champ">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">{t.contact.emailLabel}</label>
             <input
               type="email"
               id="email"
@@ -108,7 +110,7 @@ export default function Contact() {
           </div>
 
           <div className="champ">
-            <label htmlFor="message">Message</label>
+            <label htmlFor="message">{t.contact.messageLabel}</label>
             <textarea
               id="message"
               name="message"
@@ -131,7 +133,7 @@ export default function Contact() {
           )}
 
           <button type="submit" disabled={envoiEnCours}>
-            {envoiEnCours ? 'Envoi...' : 'Envoyer'}
+            {envoiEnCours ? t.contact.submitting : t.contact.submit}
           </button>
         </form>
       )}

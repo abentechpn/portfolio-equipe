@@ -35,6 +35,12 @@
   color: var(--accent-color);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .site-header button {
   margin-left: 0;
   padding: 0.5rem 1rem;
@@ -57,7 +63,7 @@
     width: 100%;
   }
 
-  .site-header button {
+  .header-actions {
     align-self: flex-start;
   }
 }

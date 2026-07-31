@@ -1,8 +1,11 @@
-﻿export const projects = [
+export const projects = [
   {
     id: 1,
     title: 'Portfolio Professionnel Dynamique',
-    description: "Le portfolio collectif de l'equipe : React, Express et deploiement continu sur Railway.",
+    description: {
+      fr: "Le portfolio collectif de l'equipe : React, Express et deploiement continu sur Railway.",
+      en: "The team's collective portfolio: React, Express, and continuous deployment on Railway.",
+    },
     tech: ['React', 'Express', 'Railway'],
     course: 'LOG3500',
     type: 'collectif',
@@ -14,7 +17,10 @@
   {
     id: 2,
     title: 'Atlas Mondial Interactif',
-    description: "Application web utilisant l'API REST Countries pour explorer les pays du monde avec des donnees en temps reel.",
+    description: {
+      fr: "Application web utilisant l'API REST Countries pour explorer les pays du monde avec des donnees en temps reel.",
+      en: "A web application using the REST Countries API to explore the world's countries with real-time data.",
+    },
     tech: ['HTML', 'CSS', 'JavaScript'],
     course: 'LOG3500',
     type: 'individuel',
@@ -26,7 +32,10 @@
   {
     id: 3,
     title: 'CareMap - Tableau de bord Pharmacie',
-    description: "Tableau de bord pour la gestion des stocks de pharmacie avec systeme d'alertes automatiques, connecte a un backend Express/Prisma.",
+    description: {
+      fr: "Tableau de bord pour la gestion des stocks de pharmacie avec systeme d'alertes automatiques, connecte a un backend Express/Prisma.",
+      en: "A dashboard for pharmacy inventory management with an automated alert system, connected to an Express/Prisma backend.",
+    },
     tech: ['React', 'Express', 'Prisma', 'PostgreSQL'],
     course: 'Stage',
     type: 'individuel',
@@ -38,7 +47,10 @@
   {
     id: 4,
     title: 'Systeme de Bibliotheque',
-    description: "Mini-projet de base de donnees pour la gestion d'une bibliotheque : schema normalise, requetes, formulaires et rapport.",
+    description: {
+      fr: "Mini-projet de base de donnees pour la gestion d'une bibliotheque : schema normalise, requetes, formulaires et rapport.",
+      en: "A database mini-project for library management: normalized schema, queries, forms, and reporting.",
+    },
     tech: ['Access', 'SQL'],
     course: 'TIC400',
     type: 'individuel',
@@ -50,7 +62,10 @@
   {
     id: 5,
     title: "Page d'inscription - Signup Page",
-    description: "Page HTML/CSS validee selon les standards W3C, avec formulaire d'inscription responsive.",
+    description: {
+      fr: "Page HTML/CSS validee selon les standards W3C, avec formulaire d'inscription responsive.",
+      en: "An HTML/CSS page validated against W3C standards, featuring a responsive sign-up form.",
+    },
     tech: ['HTML', 'CSS'],
     course: 'INF3500',
     type: 'individuel',
@@ -62,7 +77,10 @@
   {
     id: 6,
     title: 'Meteo Dynamique',
-    description: "Application web qui affiche la meteo en temps reel selon la ville recherchee, en utilisant l'API Fetch pour recuperer les donnees.",
+    description: {
+      fr: "Application web qui affiche la meteo en temps reel selon la ville recherchee, en utilisant l'API Fetch pour recuperer les donnees.",
+      en: "A web application that displays real-time weather based on the searched city, using the Fetch API to retrieve data.",
+    },
     tech: ['HTML', 'CSS', 'JavaScript'],
     course: 'LOG3500',
     type: 'individuel',
