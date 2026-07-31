@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import membres from '../data/membres';
 import { projects } from '../data/projects';
@@ -11,7 +11,14 @@ import './Accueil.css';
 export default function Accueil() {
   const { t } = useLang();
   const [itemOuvert, setItemOuvert] = useState(null);
-  const storiesDefilantes = [...galleryItems, ...galleryItems];
+  const [animationActive, setAnimationActive] = useState(true);
+
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setAnimationActive(!media.matches);
+  }, []);
+
+  const storiesDefilantes = animationActive ? [...galleryItems, ...galleryItems] : galleryItems;
 
   return (
     <>

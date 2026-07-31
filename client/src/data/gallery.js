@@ -29,4 +29,10 @@
     titre: "Newson Laurane",
     categorie: "equipe",
   },
+  {
+    id: 6,
+    src: "/assets/gallery/CareMap.png",
+    titre: "CareMap Système",
+    categorie: "Projet",
+  },
 ]
