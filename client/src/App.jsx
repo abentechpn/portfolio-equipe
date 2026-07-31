@@ -5,6 +5,7 @@ import Accueil from './pages/Accueil'
 import Equipe from './pages/Equipe'
 import Projets from './pages/Projets'
 import DetailProjet from './pages/DetailProjet'
+import EquipeDetail from './pages/EquipeDetail'
 import Contact from './pages/Contact'
 import './App.css'
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/projets/:id" element={<DetailProjet />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<h2>404 - Page non trouvée</h2>} />
+        <Route path="/equipe/:id" element={<EquipeDetail />} />
       </Routes>
     </MainLayout>
   )
