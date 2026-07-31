@@ -40,7 +40,7 @@
   },
   {
     id: 4,
-    nom: "Newson Laurané 4",
+    nom: "Newson Laurané",
     role: "Etat global & Integration API GitHub",
     bio: "Decris ici en 2-3 phrases ce que fait ce membre et ses competences.",
     parcours: "A completer : parcours academique et professionnel.",
