@@ -5,8 +5,8 @@ import './Equipe.css';
 
 export default function Equipe() {
   return (
-    <div className="equipe-page">
-      <h1 className="equipe-titre">Notre Equipe</h1>
+    <section className="equipe-page" aria-labelledby="equipe-titre">
+      <h1 id="equipe-titre" className="equipe-titre">Notre Equipe</h1>
       <p className="equipe-soustitre">Presentation des membres de l'equipe. Cliquez sur un membre pour voir son profil complet.</p>
 
       <div className="equipe-grille">
@@ -30,8 +30,6 @@ export default function Equipe() {
 
       <h2 style={{ marginTop: '3rem' }}>Statistiques GitHub</h2>
       <GithubStats username="abentechpn" />
-    </div>
+    </section>
   );
 }
-
-export default Equipe;
